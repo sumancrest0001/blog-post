@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_article, only:[:edit, :update, :show, :destroy]
+  before_action :set_post, only:[:edit, :update, :show, :destroy]
 
   def new
     @post = Post.new
@@ -40,8 +40,8 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
   private
-    def set_article
-      @article = Article.find(params[:id])
+    def set_post
+      @post = Post.find(params[:id])
     end
     def post_params
       params.require(:post).permit(:title, :body)

@@ -1,8 +1,12 @@
-<h1>All the created posts </h1>
-<p>
-Title: <%= @post.title %>
-</p>
-<p>
-Description: <%= @post.body%>
-</p>
-<p><%= link_to 'Back', posts_path %></p>
+<h2 class="post-title", align= "center"><%= @post.title %></h2>
+<div class="well col-xs-8, col-xs-offset-1">
+  <%= simple_format(@post.body) %> <!--will preserve the formatting in the description -->
+  <br>
+  <div class="post-actions">
+    <%= link_to "View all posts", posts_path, class: "btn btn-xs btn-primary" %> 
+    <%= link_to "Delete this post", post_path(@post),method: :delete,
+                                    data: {confirm: "Are you sure that you want to delete the post?"},
+                                    class: "btn btn-xs btn-danger" %>
+    <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-xs btn-info" %>
+  </div>
+</div>

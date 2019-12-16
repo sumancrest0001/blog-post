@@ -4,4 +4,7 @@
     <%= link_to "Create new post", new_post_path, class: "btn btn-xs btn-primary" %>
   </div>
 </div>
-<%= render 'post' obj: @posts %>
+<%= render 'post', obj: @posts %>
+<div align = "center">
+  <%= will_paginate %>
+</div>

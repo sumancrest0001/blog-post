@@ -3,7 +3,7 @@
     <div class="col-xs-8, col-xs-offset-1">
       <div class="well well-lg">
         <div class="post-title">
-          <%= link_to post.title, posts_path(post)%>
+          <%= link_to post.title, post_path(post)%>
         </div>
         <div class="post-body">
           <%= truncate(post.body, length:100) %> <!--will preserve the formatting in the description -->
@@ -11,7 +11,7 @@
             <small>
               Created By: <%= post.user.name if post.user%>,
               <%= time_ago_in_words(post.created_at) %> ago,
-              last updated: <%= time_ago_in_words(post.updated_at) %> ago
+             last updated: <%= time_ago_in_words(post.updated_at) %> ago
             </small>
           </div>
         </div>

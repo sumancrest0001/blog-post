@@ -1,19 +1,37 @@
-<h1>List of all the articles</h1>
-<p>
-  <%= link_to "Create new post", new_post_path %>
-</p>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.title %></td>
-      <td><%= post.body%></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %> </td>
-      <td><%= link_to 'Show', post_path(post) %> </td>
-      <td><%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    </tr>
-  <% end %>
-</table>
+<div class="row">
+  <div class="mb-1 col-md-12 col-xs-offset-1 ">
+    <h1>List of all the articles</h1>
+    <%= link_to "Create new post", new_post_path, class: "btn btn-xs btn-primary" %>
+  </div>
+</div>
+
+
+<% @posts.each do |post| %>
+  <div class="row">
+    <div class="col-xs-8, col-xs-offset-1">
+      <div class="well well-lg">
+        <div class="post-title">
+          <%= link_to post.title, posts_path(post)%>
+        </div>
+        <div class="post-body">
+          <%= truncate(post.body, length:100) %> <!--will preserve the formatting in the description -->
+          <div class="post-meta-details">
+            <small>
+              Created By: <%= post.user.name if post.user%>,
+              <%= time_ago_in_words(post.created_at) %> ago,
+              last updated: <%= time_ago_in_words(post.updated_at) %> ago
+            </small>
+          </div>
+        </div>
+        <br>
+        <div class="post-actions">
+          <%= link_to "View all posts", posts_path, class: "btn btn-xs btn-primary" %>
+          <%= link_to "Delete this post", post_path(post),method: :delete,
+                                          data: {confirm: "Are you sure that you want to delete the post?"},
+                                          class: "btn btn-xs btn-danger" %>
+          <%= link_to "Edit this post", edit_post_path(post), class: "btn btn-xs btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

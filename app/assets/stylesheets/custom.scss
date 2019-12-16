@@ -2,13 +2,15 @@ $navbar-default-bg: #66ff99;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+body {
+  margin-top: 50px;
+}
 .top-nav {
   margin-bottom: 100px;
 }
 
 .post-title {
-  margin-top: 100px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -26,8 +28,9 @@ $navbar-default-bg: #66ff99;
   }
 }
 
-.post-section {
-
+.post-meta-details {
+  border-top: 1px solid #EAEAEA;
+  margin-top: 15px;
 }
 .footer-section {
   width: 100%;

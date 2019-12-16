@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = User.first
     if @post.save
-      flash[:notice] = 'Post is successfully created'
+      flash[:success] = 'Post is successfully created'
       redirect_to post_path(@post)
     else
       render 'new'
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = 'Post is successfully updated'
+      flash[:success] = 'Post is successfully updated'
       redirect_to post_path(@post)
     else
       render 'edit'
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    flash[:notice] = 'Post is successfully deleted.'
+    flash[:success] = 'Post is successfully deleted.'
     redirect_to posts_path
   end
   private

@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
-  def new
+  def home
+    redirect_to posts_path if logged_in?
   end
 
-  def create
+  def about
   end
 end

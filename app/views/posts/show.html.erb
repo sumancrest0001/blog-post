@@ -19,7 +19,7 @@
     <%= simple_format(@post.body) %> <!--will preserve the formatting in the description -->
     <br>
     <div class="post-actions">
-      <% if logged_in? && current_user == @post.user %>
+      <% if logged_in? && (current_user == @post.user || current_user.admin?)%>
         <%= link_to "Edit this post", edit_post_path(@post), class: "btn btn-xs btn-info" %>
         <%= link_to "Delete this post", post_path(@post),method: :delete,
                                         data: {confirm: "Are you sure that you want to delete the post?"},
